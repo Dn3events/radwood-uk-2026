@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>RADwood UK 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Permanent+Marker&family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{min-height:100%;background:#111;display:flex;justify-content:center;align-items:flex-start;font-family:'Rajdhani',sans-serif;padding:20px 0}
+
+/* ââ PHONE SHELL ââ */
+.phone{
+  width:390px;min-height:844px;
+  background:#07070F;
+  border-radius:48px;
+  overflow:hidden;
+  display:flex;flex-direction:column;
+  box-shadow:0 0 0 10px #1a1a1a,0 0 0 12px #2a2a2a,0 40px 100px rgba(0,0,0,.9),0 0 80px rgba(204,34,51,.06);
+  position:relative;
+}
+
+/* ââ STATUS BAR ââ */
+.status-bar{
+  height:44px;background:#000;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 28px;flex-shrink:0;
+  position:relative;z-index:20;
+}
+.notch{
+  position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:126px;height:34px;background:#000;
+  border-radius:0 0 20px 20px;z-index:30;
+}
+.s-time{font-family:'Orbitron',sans-serif;font-size:11px;color:#fff;font-weight:600;letter-spacing:.5px}
+.s-icons{display:flex;gap:5px;align-items:center;font-size:11px;color:#fff}
+
+/* ââ TOP NAV ââ */
+.top-nav{
+  height:58px;background:#000;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 18px;flex-shrink:0;z-index:10;
+  border-bottom:2px solid #1a0008;
+  position:relative;
+}
+.top-nav::after{
+  content:'';position:absolute;bottom:-2px;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,#CC2233,#00AACC,#CC2233);
+}
+
+/* ââ RADWOOD LOGO (nav size) ââ */
+.rw-logo{
+  position:relative;display:inline-flex;align-items:center;
+  height:38px;cursor:pointer;user-select:none;
+}
+.rw-wood{
+  font-family:'Anton',sans-serif;
+  font-size:32px;
+  color:#000;
+  -webkit-text-stroke:2.5px #CC2233;
+  text-shadow:3px 3px 0 #00AACC,3.5px 3.5px 0 #008899;
+  letter-spacing:3px;
+  line-height:1;
+  text-transform:uppercase;
+  display:block;
+  padding-top:2px;
+}
+.rw-rad{
+  font-family:'Permanent Marker',cursive;
+  font-size:30px;
+  color:#fff;
+  position:absolute;
+  top:-4px;left:-2px;
+  transform:rotate(-6deg);
+  line-height:1;
+  text-shadow:1px 1px 0 rgba(0,0,0,.8);
+  letter-spacing:1px;
+}
+.rw-uk{
+  font-family:'Orbitron',sans-serif;
+  font-size:9px;font-weight:900;
+  color:#00AACC;
+  letter-spacing:2px;
+  margin-left:8px;
+  margin-top:6px;
+  text-shadow:0 0 8px rgba(0,170,204,.5);
+  align-self:flex-end;
+}
+.nav-btns{display:flex;gap:12px}
+.nav-btn{background:none;border:none;cursor:pointer;color:#555;font-size:18px;padding:4px;transition:color .2s}
+.nav-btn:hover{color:#CC2233}
+
+/* ââ SCREENS ââ */
+.screen{flex:1;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;background:#07070F;display:none}
+.screen::-webkit-scrollbar{display:none}
+.screen.active{display:block}
+
+/* ââ BOTTOM NAV ââ */
+.bottom-nav{
+  height:80px;background:#000;
+  display:flex;align-items:center;justify-content:space-around;
+  flex-shrink:0;padding-bottom:10px;
+  position:relative;z-index:10;
+}
+.bottom-nav::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,#CC2233 30%,#00AACC 70%,transparent);
+}
+.tab{
+  display:flex;flex-direction:column;align-items:center;gap:3px;
+  background:none;border:none;cursor:pointer;
+  padding:8px 14px;border-radius:12px;min-width:62px;
+  transition:all .2s;
+}
+.tab-icon{font-size:20px;line-height:1;transition:transform .2s}
+.tab-label{
+  font-family:'Rajdhani',sans-serif;font-size:9px;font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;color:#444;transition:color .2s;
+}
+.tab.active .tab-label{color:#CC2233}
+.tab.active .tab-icon{transform:translateY(-2px)}
+.tab:hover .tab-label{color:#888}
+
+/* âââââââââââââââââââââââââââââââââââââââ
+   HOME SCREEN
+âââââââââââââââââââââââââââââââââââââââ */
+.hero{
+  position:relative;height:270px;overflow:hidden;background:#000;
+  display:flex;align-items:flex-end;justify-content:center;
+}
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:linear-gradient(rgba(0,170,204,.15) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,170,204,.15) 1px,transparent 1px);
+  background-size:30px 30px;
+  transform:perspective(280px) rotateX(45deg) scale(1.6);
+  transform-origin:bottom center;
+  animation:gscroll 3s linear infinite;
+}
+@keyframes gscroll{0%{background-position:0 0}100%{background-position:0 30px}}
+.hero-vignette{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 120% 80% at 50% 120%,transparent 40%,#000 100%);
+}
+.hero-top-fade{position:absolute;top:0;left:0;right:0;height:50%;background:linear-gradient(#07070F,transparent)}
+.hero-sun{
+  position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
+  width:170px;height:85px;
+  border-radius:85px 85px 0 0;
+  background:linear-gradient(180deg,#FFE000 0%,#FF8C00 35%,#CC2233 65%,transparent 100%);
+  box-shadow:0 0 50px rgba(255,224,0,.3),0 0 100px rgba(204,34,51,.2);
+  overflow:hidden;
+}
+.hero-sun::after{
+  content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(180deg,transparent 0px,transparent 7px,rgba(7,7,15,.65) 7px,rgba(7,7,15,.65) 9px);
+}
+.hero-title-wrap{
+  position:relative;z-index:5;text-align:center;padding-bottom:14px;
+}
+
+/* ââ HERO LOGO (large) ââ */
+.hero-logo{
+  position:relative;display:inline-block;margin:0 auto;
+}
+.hero-wood{
+  font-family:'Anton',sans-serif;
+  font-size:76px;
+  color:#000;
+  -webkit-text-stroke:4px #CC2233;
+  text-shadow:6px 6px 0 #00AACC,7px 7px 0 #008899,8px 8px 0 #006677;
+  letter-spacing:8px;
+  line-height:1;
+  text-transform:uppercase;
+  display:block;
+}
+.hero-rad{
+  font-family:'Permanent Marker',cursive;
+  font-size:72px;
+  color:#fff;
+  position:absolute;
+  top:-10px;left:-4px;
+  transform:rotate(-5deg);
+  line-height:1;
+  text-shadow:2px 2px 0 rgba(0,0,0,.9),0 0 30px rgba(255,255,255,.3);
+  letter-spacing:3px;
+}
+.hero-uk-tag{
+  display:inline-block;
+  background:#CC2233;color:#fff;
+  font-family:'Orbitron',sans-serif;font-size:10px;font-weight:700;
+  letter-spacing:4px;padding:3px 12px;margin-top:2px;
+  text-transform:uppercase;
+  box-shadow:0 0 16px rgba(204,34,51,.5);
+}
+
+/* ââ COUNTDOWN ââ */
+.countdown{
+  background:#000;
+  border-top:1px solid #1a0008;border-bottom:1px solid #1a0008;
+  padding:12px 16px;
+  display:flex;align-items:center;justify-content:center;gap:5px;
+  position:relative;overflow:hidden;
+}
+.countdown::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent,rgba(204,34,51,.05),transparent);
+  animation:sweep 4s linear infinite;
+}
+@keyframes sweep{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.cd-label{
+  font-family:'Orbitron',sans-serif;font-size:8px;color:#CC2233;
+  letter-spacing:2px;text-transform:uppercase;margin-right:4px;
+}
+.cd-unit{
+  display:flex;flex-direction:column;align-items:center;
+  background:#0D0D1A;border:1px solid #CC2233;border-radius:6px;
+  padding:5px 10px;min-width:50px;
+  box-shadow:0 0 8px rgba(204,34,51,.2),inset 0 0 10px rgba(204,34,51,.05);
+}
+.cd-num{
+  font-family:'Orbitron',sans-serif;font-size:19px;font-weight:700;
+  color:#fff;text-shadow:0 0 10px rgba(255,255,255,.3);line-height:1;
+}
+.cd-lbl{font-size:8px;color:#555;letter-spacing:1px;text-transform:uppercase;margin-top:2px}
+.cd-sep{
+  font-family:'Orbitron',sans-serif;font-size:16px;color:#CC2233;font-weight:700;
+  animation:blink 1s step-end infinite;margin:0 1px;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.15}}
+
+/* ââ INFO CARD ââ */
+.icard{
+  margin:14px 14px 0;
+  background:#0D0D1A;
+  border:1px solid #1a1a2e;
+  border-radius:12px;padding:14px 16px;
+  position:relative;overflow:hidden;
+}
+.icard::before{
+  content:'';position:absolute;top:0;left:0;width:3px;height:100%;
+  background:linear-gradient(180deg,#CC2233,#00AACC);
+}
+.icard-title{
+  font-family:'Orbitron',sans-serif;font-size:9px;color:#00AACC;
+  letter-spacing:3px;text-transform:uppercase;margin-bottom:10px;
+}
+.irow{display:flex;align-items:flex-start;gap:12px;padding:8px 0;border-bottom:1px solid #12121f}
+.irow:last-child{border-bottom:none;padding-bottom:0}
+.iicon{font-size:17px;width:26px;text-align:center;flex-shrink:0;margin-top:1px}
+.ilabel{font-size:9px;color:#444;letter-spacing:1px;text-transform:uppercase}
+.ival{font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:700;color:#fff;margin-top:1px}
+.isub{font-size:11px;color:#666;margin-top:1px}
+
+/* ââ SECTION HEADER ââ */
+.sh{display:flex;align-items:center;justify-content:space-between;padding:14px 14px 8px}
+.sh-title{font-family:'Orbitron',sans-serif;font-size:9px;color:#CC2233;letter-spacing:2.5px;text-transform:uppercase}
+.sh-link{font-size:10px;color:#00AACC;letter-spacing:1px}
+
+/* ââ QUICK GRID ââ */
+.qgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 14px 14px}
+.qcard{
+  background:#0D0D1A;border:1px solid #1a1a2e;border-radius:12px;
+  padding:14px 13px;cursor:pointer;transition:all .2s;
+  position:relative;overflow:hidden;
+}
+.qcard::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px}
+.qcard.red::after{background:#CC2233;box-shadow:0 0 8px #CC2233}
+.qcard.cyan::after{background:#00AACC;box-shadow:0 0 8px #00AACC}
+.qcard.yellow::after{background:#FFE000;box-shadow:0 0 8px #FFE000}
+.qcard.green::after{background:#39FF14;box-shadow:0 0 8px #39FF14}
+.qcard:hover{transform:translateY(-2px);border-color:#252535}
+.qi{font-size:24px;margin-bottom:7px}
+.ql{font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;color:#fff}
+.qs{font-size:11px;color:#444;margin-top:1px}
+
+/* ââ FEATURED BANNER ââ */
+.fbanner{
+  margin:0 14px 14px;
+  background:linear-gradient(135deg,#150010 0%,#0D0D1A 60%);
+  border:1px solid #CC2233;border-radius:12px;
+  padding:14px;display:flex;align-items:center;gap:12px;
+  box-shadow:0 0 20px rgba(204,34,51,.1);cursor:pointer;
+}
+.fb-icon{font-size:34px;flex-shrink:0}
+.fb-eyebrow{font-family:'Orbitron',sans-serif;font-size:8px;color:#CC2233;letter-spacing:2px;text-transform:uppercase}
+.fb-title{font-family:'Anton',sans-serif;font-size:20px;letter-spacing:2px;color:#fff;margin-top:2px}
+.fb-desc{font-size:12px;color:#666;margin-top:2px}
+.fb-arrow{margin-left:auto;color:#CC2233;font-size:18px;flex-shrink:0}
+
+/* âââââââââââââââââââââââââââââââââââââââ
+   SCHEDULE SCREEN
+âââââââââââââââââââââââââââââââââââââââ */
+.sch-header{
+  background:linear-gradient(180deg,#000 0%,#07070F 100%);
+  padding:18px 14px 14px;border-bottom:1px solid #12121f;
+}
+.date-pill{
+  display:inline-flex;align-items:center;gap:5px;
+  background:#CC2233;color:#fff;
+  font-family:'Orbitron',sans-serif;font-size:9px;font-weight:700;
+  letter-spacing:2px;padding:4px 12px;border-radius:20px;margin-bottom:8px;
+  box-shadow:0 0 12px rgba(204,34,51,.4);
+}
+.page-title{font-family:'Anton',sans-serif;font-size:34px;letter-spacing:5px;color:#fff;text-transform:uppercase}
+
+.filters{display:flex;gap:7px;overflow-x:auto;padding:10px 14px 0;scrollbar-width:none}
+.filters::-webkit-scrollbar{display:none}
+.fchip{
+  flex-shrink:0;padding:6px 14px;border-radius:20px;
+  font-family:'Rajdhani',sans-serif;font-size:11px;font-weight:700;
+  letter-spacing:1px;text-transform:uppercase;cursor:pointer;
+  border:1px solid #1a1a2e;background:#0D0D1A;color:#444;transition:all .2s;
+}
+.fchip.on{background:#CC2233;color:#fff;border-color:#CC2233;box-shadow:0 0 10px rgba(204,34,51,.4)}
+
+.timeline{padding:14px;display:flex;flex-direction:column;gap:0}
+.ti{display:flex;gap:12px;position:relative}
+.ti::before{
+  content:'';position:absolute;left:44px;top:34px;bottom:-4px;
+  width:1px;background:linear-gradient(180deg,#1a1a2e,transparent);
+}
+.ti:last-child::before{display:none}
+.ti-time-col{width:44px;flex-shrink:0;padding-top:13px;text-align:right}
+.ti-time{font-family:'Orbitron',sans-serif;font-size:9px;color:#444;letter-spacing:.3px}
+.ti-dot-col{display:flex;flex-direction:column;align-items:center;flex-shrink:0;padding-top:13px;position:relative;z-index:1}
+.ti-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:3px}
+.d-red{background:#CC2233;box-shadow:0 0 8px #CC2233}
+.d-cyan{background:#00AACC;box-shadow:0 0 8px #00AACC}
+.d-yellow{background:#FFE000;box-shadow:0 0 8px #FFE000}
+.d-green{background:#39FF14;box-shadow:0 0 8px #39FF14}
+.d-orange{background:#FF8C00;box-shadow:0 0 8px #FF8C00}
+.tc{
+  flex:1;background:#0D0D1A;border:1px solid #1a1a2e;border-radius:10px;
+  padding:11px 13px;margin-bottom:10px;cursor:pointer;transition:all .2s;
+}
+.tc:hover{border-color:#252535;transform:translateX(2px)}
+.tc.hi{border-color:#CC2233;background:#110005;box-shadow:0 0 14px rgba(204,34,51,.1)}
+.tc-top{display:flex;align-items:flex-start;justify-content:space-between}
+.tc-name{font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:700;color:#fff}
+.tbadge{
+  font-size:8px;font-family:'Orbitron',sans-serif;letter-spacing:1px;
+  padding:2px 7px;border-radius:10px;font-weight:700;flex-shrink:0;
+  margin-left:7px;margin-top:2px;text-transform:uppercase;
+}
+.b-red{background:rgba(204,34,51,.15);color:#CC2233;border:1px solid rgba(204,34,51,.3)}
+.b-cyan{background:rgba(0,170,204,.15);color:#00AACC;border:1px solid rgba(0,170,204,.3)}
+.b-yellow{background:rgba(255,224,0,.12);color:#FFE000;border:1px solid rgba(255,224,0,.3)}
+.b-green{background:rgba(57,255,20,.12);color:#39FF14;border:1px solid rgba(57,255,20,.3)}
+.tc-loc{font-size:11px;color:#444;margin-top:4px}
+.tc-desc{font-size:12px;color:#666;margin-top:5px;line-height:1.45}
+
+/* âââââââââââââââââââââââââââââââââââââââ
+   VENUE SCREEN
+âââââââââââââââââââââââââââââââââââââââ */
+.map-box{
+  margin:14px;height:220px;
+  background:#09091A;border:1px solid #1a1a2e;border-radius:12px;
+  position:relative;overflow:hidden;
+}
+.map-grid{
+  position:absolute;inset:0;
+  background-image:linear-gradient(rgba(0,170,204,.06) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,170,204,.06) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+.vz{
+  position:absolute;border-radius:8px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;cursor:pointer;transition:all .2s;font-weight:700;
+}
+.vz:hover{filter:brightness(1.4);transform:scale(1.04)}
+.vz-lbl{font-size:8px;letter-spacing:.8px;text-transform:uppercase;line-height:1.3;font-family:'Rajdhani',sans-serif}
+.vz-ico{font-size:18px;margin-bottom:3px}
+.vz1{top:12px;left:12px;width:116px;height:78px;background:rgba(204,34,51,.12);border:1px solid rgba(204,34,51,.4);color:#CC2233}
+.vz2{top:12px;right:12px;width:88px;height:58px;background:rgba(0,170,204,.1);border:1px solid rgba(0,170,204,.35);color:#00AACC}
+.vz3{bottom:12px;left:12px;width:78px;height:58px;background:rgba(57,255,20,.08);border:1px solid rgba(57,255,20,.3);color:#39FF14}
+.vz4{bottom:12px;left:100px;width:78px;height:58px;background:rgba(255,224,0,.08);border:1px solid rgba(255,224,0,.25);color:#FFE000}
+.vz5{bottom:12px;right:12px;width:78px;height:58px;background:rgba(255,140,0,.08);border:1px solid rgba(255,140,0,.3);color:#FF8C00}
+.vz6{top:96px;left:12px;width:54px;height:46px;background:rgba(100,100,160,.08);border:1px solid rgba(100,100,160,.25);color:#7777aa}
+.map-road-h{position:absolute;top:96px;left:70px;right:104px;height:10px;border-radius:5px;background:rgba(255,255,255,.04);border:1px dashed rgba(255,255,255,.07)}
+.map-road-v{position:absolute;top:72px;right:54px;width:10px;height:120px;border-radius:5px;background:rgba(255,255,255,.04);border:1px dashed rgba(255,255,255,.07)}
+
+.zlist{padding:0 14px 14px;display:flex;flex-direction:column;gap:7px}
+.zitem{
+  display:flex;align-items:center;gap:12px;
+  background:#0D0D1A;border:1px solid #1a1a2e;border-radius:10px;
+  padding:11px 13px;cursor:pointer;transition:all .2s;
+}
+.zitem:hover{border-color:#252535}
+.zdot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.zname{font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;color:#fff}
+.zdesc{font-size:11px;color:#444;margin-top:1px}
+.zdist{margin-left:auto;font-family:'Orbitron',sans-serif;font-size:9px;color:#333;flex-shrink:0}
+
+/* âââââââââââââââââââââââââââââââââââââââ
+   TICKETS SCREEN
+âââââââââââââââââââââââââââââââââââââââ */
+.tix-hero{
+  background:linear-gradient(180deg,#150008 0%,#07070F 100%);
+  padding:22px 14px 18px;text-align:center;
+  border-bottom:1px solid #1a1a2e;
+}
+.tix-eyebrow{font-family:'Orbitron',sans-serif;font-size:8px;color:#CC2233;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px}
+.tix-title{font-family:'Anton',sans-serif;font-size:38px;letter-spacing:5px;color:#fff;text-transform:uppercase}
+.tix-sub{font-size:12px;color:#555;margin-top:4px}
+
+.tix-list{padding:14px;display:flex;flex-direction:column;gap:11px}
+.tcard{
+  background:#0D0D1A;border-radius:14px;overflow:hidden;
+  cursor:pointer;transition:all .2s;border:1px solid #1a1a2e;
+}
+.tcard:hover{transform:translateY(-2px)}
+.tcard.feat{border-color:#CC2233;box-shadow:0 0 20px rgba(204,34,51,.12)}
+.thead{padding:14px 15px 11px;display:flex;align-items:center;justify-content:space-between}
+.ttype{font-family:'Anton',sans-serif;font-size:22px;letter-spacing:3px}
+.tbadge-feat{
+  font-size:8px;font-family:'Orbitron',sans-serif;color:#CC2233;
+  letter-spacing:2px;margin-bottom:4px;
+}
+.tprice-block{text-align:right}
+.tprice{font-family:'Orbitron',sans-serif;font-size:19px;font-weight:700}
+.tprice-lbl{font-size:9px;color:#444;letter-spacing:1px;margin-top:2px}
+.tdivider{
+  height:1px;position:relative;
+  background:repeating-linear-gradient(90deg,#1a1a2e 0,#1a1a2e 5px,transparent 5px,transparent 9px);
+}
+.tdivider::before,.tdivider::after{
+  content:'';position:absolute;top:-7px;
+  width:14px;height:14px;border-radius:50%;
+  background:#07070F;border:1px solid #1a1a2e;
+}
+.tdivider::before{left:-7px}
+.tdivider::after{right:-7px}
+.tbody{padding:11px 15px 15px}
+.tperks{list-style:none;display:flex;flex-direction:column;gap:5px;margin-bottom:13px}
+.tperk{display:flex;align-items:center;gap:8px;font-size:13px;color:#aaa}
+.pcheck{font-size:13px}
+.tcta{
+  width:100%;border:none;border-radius:8px;padding:11px;
+  font-family:'Orbitron',sans-serif;font-size:10px;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .2s;
+}
+.cta-red{background:#CC2233;color:#fff}
+.cta-red:hover{background:#e02233;box-shadow:0 4px 16px rgba(204,34,51,.4)}
+.cta-cyan{background:transparent;color:#00AACC;border:1px solid #00AACC}
+.cta-cyan:hover{background:rgba(0,170,204,.1)}
+.cta-dim{background:transparent;color:#444;border:1px solid #1a1a2e}
+
+/* âââââââââââââââââââââââââââââââââââââââ
+   MORE SCREEN
+âââââââââââââââââââââââââââââââââââââââ */
+.more-header{
+  background:linear-gradient(180deg,#000 0%,#07070F 100%);
+  padding:22px 14px 18px;text-align:center;
+  border-bottom:1px solid #1a1a2e;
+}
+/* Large hero logo in more screen */
+.more-logo-wrap{
+  position:relative;display:inline-block;margin:0 auto;
+}
+.more-wood{
+  font-family:'Anton',sans-serif;font-size:52px;
+  color:#000;-webkit-text-stroke:3px #CC2233;
+  text-shadow:4px 4px 0 #00AACC,5px 5px 0 #007788;
+  letter-spacing:6px;line-height:1;text-transform:uppercase;display:block;
+}
+.more-rad{
+  font-family:'Permanent Marker',cursive;font-size:50px;color:#fff;
+  position:absolute;top:-7px;left:-2px;transform:rotate(-5deg);
+  line-height:1;text-shadow:2px 2px 0 rgba(0,0,0,.9);letter-spacing:2px;
+}
+.more-tagline{font-family:'Rajdhani',sans-serif;font-size:12px;color:#555;letter-spacing:2px;text-transform:uppercase;margin-top:8px}
+.more-sub{font-size:11px;color:#333;margin-top:6px}
+
+.msec{padding:14px 14px 4px}
+.msec-lbl{font-family:'Orbitron',sans-serif;font-size:8px;color:#333;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
+.mlist{display:flex;flex-direction:column;gap:2px}
+.mitem{
+  display:flex;align-items:center;gap:12px;
+  background:#0D0D1A;border-radius:10px;padding:13px;
+  cursor:pointer;transition:all .2s;border:1px solid transparent;
+}
+.mitem:hover{border-color:#1a1a2e}
+.mico{font-size:18px;width:26px;text-align:center;flex-shrink:0}
+.mlbl{font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;color:#fff}
+.msub{font-size:11px;color:#444;margin-top:1px}
+.marr{margin-left:auto;color:#2a2a3a;font-size:15px}
+
+.social-row{display:flex;gap:8px;padding:0 14px 14px}
+.sbtn{
+  flex:1;background:#0D0D1A;border:1px solid #1a1a2e;border-radius:10px;
+  padding:13px 8px;text-align:center;cursor:pointer;transition:all .2s;
+}
+.sbtn:hover{border-color:#252535}
+.sbtn-ico{font-size:20px;margin-bottom:3px}
+.sbtn-lbl{font-size:10px;color:#444;font-family:'Rajdhani',sans-serif;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+
+.pwby{text-align:center;padding:10px 14px 20px;font-size:10px;color:#2a2a2a;letter-spacing:1.5px;text-transform:uppercase;font-family:'Orbitron',sans-serif}
+.pwby span{color:#CC2233}
+
+/* ââ UTILITIES ââ */
+.pb16{padding-bottom:16px}
+.mt4{margin-top:4px}
+</style>
+</head>
+<body>
+
+<div class="phone">
+
+  <!-- Status Bar -->
+  <div class="status-bar">
+    <div class="notch"></div>
+    <span class="s-time" id="s-time">09:41</span>
+    <div class="s-icons">
+      <span>â²â²â²</span>
+      <span>WiFi</span>
+      <span>ð</span>
+    </div>
+  </div>
+
+  <!-- Top Nav -->
+  <div class="top-nav">
+    <div class="rw-logo">
+      <span class="rw-wood">WOOD</span>
+      <span class="rw-rad">RAD</span>
+      <span class="rw-uk">UK</span>
+    </div>
+    <div class="nav-btns">
+      <button class="nav-btn">ð</button>
+      <button class="nav-btn">ð¤</button>
+    </div>
+  </div>
+
+  <!-- ââ HOME SCREEN ââ -->
+  <div class="screen active" id="sc-home">
+
+    <div class="hero">
+      <div class="hero-grid"></div>
+      <div class="hero-vignette"></div>
+      <div class="hero-top-fade"></div>
+      <div class="hero-sun"></div>
+      <div class="hero-title-wrap">
+        <div class="hero-logo">
+          <span class="hero-wood">WOOD</span>
+          <span class="hero-rad">RAD</span>
+        </div>
+        <div><span class="hero-uk-tag">UK Â· 2026</span></div>
+      </div>
+    </div>
+
+    <!-- Countdown -->
+    <div class="countdown">
+      <span class="cd-label">Event In</span>
+      <div class="cd-unit"><span class="cd-num" id="cd-d">--</span><span class="cd-lbl">Days</span></div>
+      <span class="cd-sep">:</span>
+      <div class="cd-unit"><span class="cd-num" id="cd-h">--</span><span class="cd-lbl">Hrs</span></div>
+      <span class="cd-sep">:</span>
+      <div class="cd-unit"><span class="cd-num" id="cd-m">--</span><span class="cd-lbl">Min</span></div>
+      <span class="cd-sep">:</span>
+      <div class="cd-unit"><span class="cd-num" id="cd-s">--</span><span class="cd-lbl">Sec</span></div>
+    </div>
+
+    <!-- Event Details -->
+    <div class="icard">
+      <div class="icard-title">Event Details</div>
+      <div class="irow">
+        <span class="iicon">ð</span>
+        <div>
+          <div class="ilabel">Date</div>
+          <div class="ival">Sunday 4th October 2026</div>
+          <div class="isub">Gates open 09:00 â Closes 17:00</div>
+        </div>
+      </div>
+      <div class="irow">
+        <span class="iicon">ð</span>
+        <div>
+          <div class="ilabel">Venue</div>
+          <div class="ival">Production Park</div>
+          <div class="isub">South Kirkby, West Yorkshire Â· WF9 3NR</div>
+        </div>
+      </div>
+      <div class="irow">
+        <span class="iicon">ð</span>
+        <div>
+          <div class="ilabel">Vehicle Eligibility</div>
+          <div class="ival">1980â1999 Models Only</div>
+          <div class="isub">Original era or sympathetically modified</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Access -->
+    <div class="sh mt4">
+      <span class="sh-title">Quick Access</span>
+    </div>
+    <div class="qgrid">
+      <div class="qcard red" onclick="switchTab('schedule')">
+        <div class="qi">ð</div>
+        <div class="ql">Schedule</div>
+        <div class="qs">10 events today</div>
+      </div>
+      <div class="qcard cyan" onclick="switchTab('tickets')">
+        <div class="qi">ð</div>
+        <div class="ql">Tickets</div>
+        <div class="qs">From Â£18</div>
+      </div>
+      <div class="qcard yellow" onclick="switchTab('venue')">
+        <div class="qi">ðº</div>
+        <div class="ql">Venue Map</div>
+        <div class="qs">6 zones</div>
+      </div>
+      <div class="qcard green" onclick="switchTab('more')">
+        <div class="qi">â¹ï¸</div>
+        <div class="ql">About</div>
+        <div class="qs">Info & FAQs</div>
+      </div>
+    </div>
+
+    <!-- Featured Marque -->
+    <div class="sh">
+      <span class="sh-title">Featured This Year</span>
+    </div>
+    <div class="fbanner">
+      <span class="fb-icon">ð</span>
+      <div>
+        <div class="fb-eyebrow">Featured Marque 2026</div>
+        <div class="fb-title">Nissan Skyline R32</div>
+        <div class="fb-desc">The icon that defined a generation. An era immortalised.</div>
+      </div>
+      <span class="fb-arrow">âº</span>
+    </div>
+
+    <div style="height:12px"></div>
+  </div>
+
+  <!-- ââ SCHEDULE SCREEN ââ -->
+  <div class="screen" id="sc-schedule">
+    <div class="sch-header">
+      <div class="date-pill">ð Sun 4 Oct 2026</div>
+      <div class="page-title">Schedule</div>
+    </div>
+
+    <div class="filters" id="filter-row">
+      <button class="fchip on" data-cat="all" onclick="filterSched(this,'all')">All</button>
+      <button class="fchip" data-cat="show" onclick="filterSched(this,'show')">Car Show</button>
+      <button class="fchip" data-cat="music" onclick="filterSched(this,'music')">Music</button>
+      <button class="fchip" data-cat="food" onclick="filterSched(this,'food')">Food</button>
+    </div>
+
+    <div class="timeline" id="timeline"></div>
+  </div>
+
+  <!-- ââ VENUE SCREEN ââ -->
+  <div class="screen" id="sc-venue">
+    <div class="sch-header">
+      <div class="date-pill">ð Production Park, South Kirkby</div>
+      <div class="page-title">Venue Map</div>
+    </div>
+
+    <!-- Stylised map -->
+    <div class="map-box">
+      <div class="map-grid"></div>
+      <div class="map-road-h"></div>
+      <div class="map-road-v"></div>
+      <div class="vz vz1"><span class="vz-ico">ð</span><span class="vz-lbl">Main Show Field</span></div>
+      <div class="vz vz2"><span class="vz-ico">ðµ</span><span class="vz-lbl">Synthwave Stage</span></div>
+      <div class="vz vz3"><span class="vz-ico">ð®</span><span class="vz-lbl">Fuel Stop</span></div>
+      <div class="vz vz4"><span class="vz-ico">ð</span><span class="vz-lbl">Trading Post</span></div>
+      <div class="vz vz5"><span class="vz-ico">â­</span><span class="vz-lbl">VIP Paddock</span></div>
+      <div class="vz vz6"><span class="vz-ico">ð¿ï¸</span><span class="vz-lbl">Park</span></div>
+    </div>
+
+    <div class="sh mt4"><span class="sh-title">Venue Zones</span><span class="sh-link" style="font-size:9px">WF9 3NR</span></div>
+    <div class="zlist">
+      <div class="zitem"><div class="zdot" style="background:#CC2233;box-shadow:0 0 6px #CC2233"></div><div><div class="zname">Main Show Field</div><div class="zdesc">Hundreds of registered 80s &amp; 90s vehicles</div></div><div class="zdist">You are here</div></div>
+      <div class="zitem"><div class="zdot" style="background:#00AACC;box-shadow:0 0 6px #00AACC"></div><div><div class="zname">Synthwave Stage</div><div class="zdesc">Live DJs &amp; entertainment all day</div></div><div class="zdist">200m</div></div>
+      <div class="zitem"><div class="zdot" style="background:#39FF14;box-shadow:0 0 6px #39FF14"></div><div><div class="zname">The Fuel Stop</div><div class="zdesc">Street food, drinks &amp; ice cream van</div></div><div class="zdist">300m</div></div>
+      <div class="zitem"><div class="zdot" style="background:#FFE000;box-shadow:0 0 6px #FFE000"></div><div><div class="zname">The Trading Post</div><div class="zdesc">Merchandise, auto-jumble &amp; retro goods</div></div><div class="zdist">150m</div></div>
+      <div class="zitem"><div class="zdot" style="background:#FF8C00;box-shadow:0 0 6px #FF8C00"></div><div><div class="zname">VIP Paddock</div><div class="zdesc">Hagerty lounge &amp; featured marques</div></div><div class="zdist">400m</div></div>
+      <div class="zitem"><div class="zdot" style="background:#7777aa;box-shadow:0 0 6px #7777aa"></div><div><div class="zname">Car Park</div><div class="zdesc">Free parking for all ticket holders</div></div><div class="zdist">Entrance</div></div>
+    </div>
+
+    <div class="icard" style="margin:0 14px 20px">
+      <div class="icard-title">Getting There</div>
+      <div class="irow">
+        <span class="iicon">ð</span>
+        <div>
+          <div class="ilabel">By Car</div>
+          <div class="isub">J38 M1, follow signs for South Kirkby. Free parking on site.</div>
+        </div>
+      </div>
+      <div class="irow">
+        <span class="iicon">ð</span>
+        <div>
+          <div class="ilabel">By Train</div>
+          <div class="isub">Fitzwilliam station, 1.2 miles. Taxi rank available on site.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ââ TICKETS SCREEN ââ -->
+  <div class="screen" id="sc-tickets">
+    <div class="tix-hero">
+      <div class="tix-eyebrow">RADwood UK 2026</div>
+      <div class="tix-title">Get Tickets</div>
+      <div class="tix-sub">4 October 2026 Â· Production Park, South Kirkby</div>
+    </div>
+
+    <div class="tix-list">
+
+      <!-- General -->
+      <div class="tcard">
+        <div class="thead">
+          <div><div class="ttype" style="color:#00AACC">General Admission</div></div>
+          <div class="tprice-block">
+            <div class="tprice" style="color:#00AACC">Â£18</div>
+            <div class="tprice-lbl">per person</div>
+          </div>
+        </div>
+        <div class="tdivider"></div>
+        <div class="tbody">
+          <ul class="tperks">
+            <li class="tperk"><span class="pcheck" style="color:#00AACC">â</span> Full show field access</li>
+            <li class="tperk"><span class="pcheck" style="color:#00AACC">â</span> Live entertainment &amp; stage</li>
+            <li class="tperk"><span class="pcheck" style="color:#00AACC">â</span> Food &amp; trading zones</li>
+            <li class="tperk"><span class="pcheck" style="color:#00AACC">â</span> Free car parking included</li>
+          </ul>
+          <button class="tcta cta-cyan">Buy Now</button>
+        </div>
+      </div>
+
+      <!-- RAD Pass (featured) -->
+      <div class="tcard feat">
+        <div class="thead">
+          <div>
+            <div class="tbadge-feat">â BEST VALUE</div>
+            <div class="ttype" style="color:#CC2233">RAD Pass</div>
+          </div>
+          <div class="tprice-block">
+            <div class="tprice" style="color:#CC2233">Â£32</div>
+            <div class="tprice-lbl">per person</div>
+          </div>
+        </div>
+        <div class="tdivider"></div>
+        <div class="tbody">
+          <ul class="tperks">
+            <li class="tperk"><span class="pcheck" style="color:#CC2233">â</span> Everything in General Admission</li>
+            <li class="tperk"><span class="pcheck" style="color:#CC2233">â</span> Priority entry from 08:30</li>
+            <li class="tperk"><span class="pcheck" style="color:#CC2233">â</span> Official RADwood UK tote bag</li>
+            <li class="tperk"><span class="pcheck" style="color:#CC2233">â</span> Lanyard &amp; collector's programme</li>
+            <li class="tperk"><span class="pcheck" style="color:#CC2233">â</span> Judging area wristband</li>
+          </ul>
+          <button class="tcta cta-red">Get RAD Pass</button>
+        </div>
+      </div>
+
+      <!-- VIP -->
+      <div class="tcard">
+        <div class="thead">
+          <div><div class="ttype" style="color:#FFE000">VIP</div></div>
+          <div class="tprice-block">
+            <div class="tprice" style="color:#FFE000">Â£75</div>
+            <div class="tprice-lbl">per person</div>
+          </div>
+        </div>
+        <div class="tdivider"></div>
+        <div class="tbody">
+          <ul class="tperks">
+            <li class="tperk"><span class="pcheck" style="color:#FFE000">â</span> Everything in RAD Pass</li>
+            <li class="tperk"><span class="pcheck" style="color:#FFE000">â</span> Hagerty VIP Lounge access</li>
+            <li class="tperk"><span class="pcheck" style="color:#FFE000">â</span> Complimentary drinks on arrival</li>
+            <li class="tperk"><span class="pcheck" style="color:#FFE000">â</span> Meet the judges &amp; car owners</li>
+            <li class="tperk"><span class="pcheck" style="color:#FFE000">â</span> Covered viewing at awards ceremony</li>
+          </ul>
+          <button class="tcta cta-dim" style="color:#FFE000;border-color:#FFE000">Go VIP</button>
+        </div>
+      </div>
+
+      <!-- Vehicle Entry -->
+      <div class="tcard">
+        <div class="thead">
+          <div><div class="ttype" style="color:#FF8C00">Vehicle Entry</div></div>
+          <div class="tprice-block">
+            <div class="tprice" style="color:#FF8C00">Â£45</div>
+            <div class="tprice-lbl">per vehicle</div>
+          </div>
+        </div>
+        <div class="tdivider"></div>
+        <div class="tbody">
+          <ul class="tperks">
+            <li class="tperk"><span class="pcheck" style="color:#FF8C00">â</span> 1980â1999 vehicles only</li>
+            <li class="tperk"><span class="pcheck" style="color:#FF8C00">â</span> Dedicated show field parking</li>
+            <li class="tperk"><span class="pcheck" style="color:#FF8C00">â</span> Vehicle pass &amp; display placard</li>
+            <li class="tperk"><span class="pcheck" style="color:#FF8C00">â</span> Eligible for all class awards</li>
+            <li class="tperk"><span class="pcheck" style="color:#FF8C00">â</span> Includes 1 RAD Pass for driver</li>
+          </ul>
+          <button class="tcta cta-dim" style="color:#FF8C00;border-color:#FF8C00">Register Your Car</button>
+        </div>
+      </div>
+
+    </div>
+    <div style="text-align:center;padding:4px 14px 20px;font-size:10px;color:#2a2a2a;letter-spacing:1px;font-family:'Orbitron',sans-serif">All tickets include free parking Â· Secure checkout via Hagerty</div>
+  </div>
+
+  <!-- ââ MORE SC_EELT£RVCV@´´ø(ñ¥Ø±ÍÌôÍÉ¸¥ôÍµµ½Éø(ñ¥Ø±ÍÌôµ½Éµ¡Èø(ñ¥Ø±ÍÌôµ½Éµ±½¼µÝÉÀø(ñÍÁ¸±ÍÌôµ½ÉµÝ½½ù]==ð½ÍÁ¸ø(ñÍÁ¸±ÍÌôµ½ÉµÉùIð½ÍÁ¸ø(ð½¥Øø(ñ¥Ø±ÍÌôµ½ÉµÑ±¥¹ù
+±ÉÑ¥¹àÁÌµÀìäÁÌ
+È
+Õ±ÑÕÉð½¥Øø(ñ¥Ø±ÍÌôµ½ÉµÍÕùÉ¥Ù¸ä!ÉÑä
+ÜÍÐ¸ÈÀÄÜð½¥Øø(ð½¥Øø((ñ¥Ø±ÍÌôµÍø(ñ¥Ø±ÍÌôµÍµ±°ù%¹¼ð½¥Øø(ñ¥Ø±ÍÌôµ±¥ÍÐø(ñ¥Ø±ÍÌôµ¥Ñ´øñÍÁ¸±ÍÌôµ¥¼ûvLð½ÍÁ¸øñ¥Ø><div class="mlbl">FAQs</div><div class="msub">Parking, accessibility, rules &amp; more</div></div><span class="marr">âº</span></div>
+        <div class="mitem"><span class="mico">ð</span><div><div class="mlbl">Vehicle Rules</div><div class="msub">What qualifies for the show field?</div></div><span class="marr">âº</span></div>
+        <div class="mitem"><span class="mico">ð§</span><div><div class="mlbl">Family Info</div><div class="msub">Under 12s go free Â· Family facilities</div></div><span class="marr">âº</span></div>
+        <div class="mitem"><span class="mico">â¿</span><div><div class="mlbl">Accessibility</div><div class="msub">Disabled parking, access &amp; facilities</div></div><span class="marr">âº</span></div>
+        <div class="mitem"><span class="mico">ð</span><div><div class="mlbl">Terms &amp; Conditions</div><div class="msub">Event T&amp;Cs and refund policy</div></div><span class="marr">âº</span></div>
+      </div>
+    </div>
+
+    <div class="msec" style="margin-top:10px">
+      <div class="msec-lbl">Connect</div>
+      <div class="mlist">
+        <div class="mitem"><span class="mico">ð¸</span><div><div class="mlbl">Photo Gallery</div><div class="msub">RADwood UK &amp; past events worldwide</div></div><span class="marr">âº</span></div>
+        <div class="mitem"><span class="mico">ð</span><div><div class="mlbl">News &amp; Updates</div><div class="msub">Latest event announcements</div></div><span class="marr">âº</span></div>
+        <div class="mitem"><span class="mico">ð¬</span><div><div class="mlbl">Contact Us</div><div class="msub">hello@radwooduk.co.uk</div></div><span class="marr">âº</span></div>
+      </div>
+    </div>
+
+    <div class="msec" style="margin-top:10px;padding-bottom:10px">
+      <div class="msec-lbl">Follow Us</div>
+    </div>
+    <div class="social-row">
+      <div class="sbtn"><div class="sbtn-ico">ð·</div><div class="sbtn-lbl">Instagram</div></div>
+      <div class="sbtn"><div class="sbtn-ico">ð¦</div><div class="sbtn-lbl">X</div></div>
+      <div class="sbtn"><div class="sbtn-ico">ð</div><div class="sbtn-lbl">Facebook</div></div>
+      <div class="sbtn"><div class="sbtn-ico">â¶ï¸</div><div class="sbtn-lbl">YouTube</div></div>
+    </div>
+
+    <div class="pwby">Powered by <span>Hagerty</span> Â· RADwood UK App v1.0</div>
+  </div>
+
+  <!-- ââ BOTTOM NAV ââ -->
+  <div class="bottom-nav">
+    <button class="tab active" id="tab-home" onclick="switchTab('home')">
+      <span class="tab-icon">ð </span>
+      <span class="tab-label">Home</span>
+    </button>
+    <button class="tab" id="tab-schedule" onclick="switchTab('schedule')">
+      <span class="tab-icon">ð</span>
+      <span class="tab-label">Schedule</span>
+    </button>
+    <button class="tab" id="tab-venue" onclick="switchTab('venue')">
+      <span class="tab-icon">ðº</span>
+      <span class="tab-label">Venue</span>
+    </button>
+    <button class="tab" id="tab-tickets" onclick="switchTab('tickets')">
+      <span class="tab-icon">ð</span>
+      <span class="tab-label">Tickets</span>
+    </button>
+    <button class="tab" id="tab-more" onclick="switchTab('more')">
+      <span class="tab-icon">â°</span>
+      <span class="tab-label">More</span>
+    </button>
+  </div>
+
+</div><!-- /phone -->
+
+<script>
+/* ââ TAB SWITCHING ââ */
+function switchTab(name){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('sc-'+name).classList.add('active');
+  document.getElementById('tab-'+name).classList.add('active');
+  document.getElementById('sc-'+name).scrollTop=0;
+}
+
+/* ââ STATUS BAR TIME ââ */
+function updateTime(){
+  var n=new Date();
+  var h=String(n.getHours()).padStart(2,'0');
+  var m=String(n.getMinutes()).padStart(2,'0');
+  document.getElementById('s-time').textContent=h+':'+m;
+}
+updateTime();setInterval(updateTime,30000);
+
+/* ââ COUNTDOWN ââ */
+var EVENT=new Date('2026-10-04T09:00:00').getTime();
+function updateCountdown(){
+  var diff=EVENT-Date.now();
+  if(diff<=0){document.getElementById('cd-d').textContent='00';document.getElementById('cd-h').textContent='00';document.getElementById('cd-m').textContent='00';document.getElementById('cd-s').textContent='00';return;}
+  var d=Math.floor(diff/86400000);
+  var h=Math.floor((diff%86400000)/3600000);
+  var m=Math.floor((diff%3600000)/60000);
+  var s=Math.floor((diff%60000)/1000);
+  document.getElementById('cd-d').textContent=String(d).padStart(2,'0');
+  document.getElementById('cd-h').textContent=String(h).padStart(2,'0');
+  document.getElementById('cd-m').textContent=String(m).padStart(2,'0');
+  document.getElementById('cd-s').textContent=String(s).padStart(2,'0');
+}
+updateCountdown();setInterval(updateCountdown,1000);
+
+/* ââ SCHEDULE DATA ââ */
+var SCHED=[
+  {time:'09:00',name:'Gates Open',loc:'Main Entrance',cat:'all',dot:'d-red',badge:'b-red',bt:'Start',desc:'Doors open to all ticket holders. Collect your wristband and show programme at the gate.',hi:false},
+  {time:'09:30',name:'RAD Parade Lap',loc:'Show Field',cat:'show',dot:'d-cyan',badge:'b-cyan',bt:'Show',desc:'All registered vehicles take a ceremonial lap of the show field. A sight to behold.',hi:true},
+  {time:'10:00',name:'Best of Breed Judging',loc:'Judging Zone A',cat:'show',dot:'d-red',badge:'b-red',bt:'Show',desc:'Judges assess vehicles across 12 classes â from Mk1 Golf to Countach.',hi:false},
+  {time:'11:00',name:'Synthwave Stage Opens',loc:'Synthwave Stage',cat:'music',dot:'d-red',badge:'b-red',bt:'Live',desc:'DJ RAD kicks off the live stage with a fully era-accurate 80s &amp; 90s playlist.',hi:false},
+  {time:'12:00',name:'The Fuel Stop Opens',loc:'Food Court',cat:'food',dot:'d-green',badge:'b-green',bt:'Food',desc:'Street food vendors, food trucks, and an 80s-themed ice cream van serving all day.',hi:false},
+  {time:'13:00',name:'Live DJ: Retro Drive Mix',loc:'Synthwave Stage',cat:'music',dot:'d-red',badge:'b-red',bt:'Live',desc:'Non-stop bangers from the golden era â from Pure Shores to Jump Around.',hi:false},
+  {time:'14:00',name:'Featured Marque Showcase',loc:'VIP Paddock',cat:'show',dot:'d-cyan',badge:'b-cyan',bt:'Show',desc:"This year's featured marque: the iconic Nissan Skyline R32 generation. On display in force.",hi:true},
+  {time:'15:00',name:'RAD Awards Ceremony',loc:'Main Stage',cat:'show',dot:'d-yellow',badge:'b-yellow',bt:'Awards',desc:'The most outstanding vehicles are presented to the crowd. RAD Awards presented live on stage.',hi:false},
+  {time:'16:00',name:'Final Parade Lap',loc:'Show Field',cat:'show',dot:'d-red',badge:'b-red',bt:'Show',desc:'Every registered car takes one final celebratory lap. Line your spot early.',hi:false},
+  {time:'17:00',name:'Gates Close',loc:'Main Entrance',cat:'all',dot:'d-red',badge:'b-red',bt:'End',desc:'The day is done. Safe travels home â and see you next year. Stay RAD.',hi:false},
+];
+
+var activeFilter='all';
+function filterSched(el,cat){
+  activeFilter=cat;
+  document.querySelectorAll('.fchip').forEach(c=>c.classList.remove('on'));
+  el.classList.add('on');
+  renderSched();
+}
+function renderSched(){
+  var tl=document.getElementById('timeline');
+  var items=activeFilter==='all'?SCHED:SCHED.filter(function(e){return e.cat===activeFilter||e.cat==='all'});
+  tl.innerHTML=items.map(function(e){
+    return '<div class="ti">'
+      +'<div class="ti-time-col"><span class="ti-time">'+e.time+'</span></div>'
+      +'<div class="ti-dot-col"><div class="ti-dot '+e.dot+'"></div></div>'
+      +'<div class="tc'+(e.hi?' hi':'')+'"><div class="tc-top"><span class="tc-name">'+e.name+'</span><span class="tbadge '+e.badge+'">'+e.bt+'</span></div>'
+      +'<div class="tc-loc">ð '+e.loc+'</div>'
+      +'<div class="tc-desc">'+e.desc+'</div></div>'
+      +'</div>';
+  }).join('');
+}
+renderSched();
+</script>
+</body>
+</html>
