@@ -9,12 +9,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Permanent+Marker&family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;600;700;900&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-html,body{min-height:100%;background:#111;display:flex;justify-content:center;align-items:flex-start;font-family:'Rajdhani',sans-serif;padding:20px 0}
+html,body{min-height:100%;background:linear-gradient(160deg,#1a1530 0%,#0e1525 50%,#111820 100%);display:flex;justify-content:center;align-items:flex-start;font-family:'Rajdhani',sans-serif;padding:20px 0}
 
 /* ââ PHONE SHELL ââ */
 .phone{
   width:390px;min-height:844px;
-  background:#07070F;
+  background:#0b0b1c;
   border-radius:48px;
   overflow:hidden;
   display:flex;flex-direction:column;
@@ -24,7 +24,7 @@ html,body{min-height:100%;background:#111;display:flex;justify-content:center;al
 
 /* ââ STATUS BAR ââ */
 .status-bar{
-  height:44px;background:#000;
+  height:44px;background:#06060f;
   display:flex;align-items:center;justify-content:space-between;
   padding:0 28px;flex-shrink:0;
   position:relative;z-index:20;
@@ -39,10 +39,10 @@ html,body{min-height:100%;background:#111;display:flex;justify-content:center;al
 
 /* ââ TOP NAV ââ */
 .top-nav{
-  height:58px;background:#000;
+  height:58px;background:#06060f;
   display:flex;align-items:center;justify-content:space-between;
   padding:0 18px;flex-shrink:0;z-index:10;
-  border-bottom:2px solid #1a0008;
+  border-bottom:2px solid #1a001a;
   position:relative;
 }
 .top-nav::after{
@@ -89,11 +89,11 @@ html,body{min-height:100%;background:#111;display:flex;justify-content:center;al
   align-self:flex-end;
 }
 .nav-btns{display:flex;gap:12px}
-.nav-btn{background:none;border:none;cursor:pointer;color:#555;font-size:18px;padding:4px;transition:color .2s}
+.nav-btn{background:none;border:none;cursor:pointer;color:#8888aa;font-size:18px;padding:4px;transition:color .2s}
 .nav-btn:hover{color:#CC2233}
 
 /* ââ SCREENS ââ */
-.screen{flex:1;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;background:#07070F;display:none}
+.screen{flex:1;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;background:#0b0b1c;display:none}
 .screen::-webkit-scrollbar{display:none}
 .screen.active{display:block}
 
@@ -117,7 +117,7 @@ html,body{min-height:100%;background:#111;display:flex;justify-content:center;al
 .tab-icon{font-size:20px;line-height:1;transition:transform .2s}
 .tab-label{
   font-family:'Rajdhani',sans-serif;font-size:9px;font-weight:700;
-  letter-spacing:1.5px;text-transform:uppercase;color:#444;transition:color .2s;
+  letter-spacing:1.5px;text-transform:uppercase;color:#8888aa;transition:color .2s;
 }
 .tab.active .tab-label{color:#CC2233}
 .tab.active .tab-icon{transform:translateY(-2px)}
@@ -144,7 +144,7 @@ html,body{min-height:100%;background:#111;display:flex;justify-content:center;al
   position:absolute;inset:0;
   background:radial-gradient(ellipse 120% 80% at 50% 120%,transparent 40%,#000 100%);
 }
-.hero-top-fade{position:absolute;top:0;left:0;right:0;height:50%;background:linear-gradient(#07070F,transparent)}
+.hero-top-fade{position:absolute;top:0;left:0;right:0;height:50%;background:linear-gradient(#0b0b1c,transparent)}
 .hero-sun{
   position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
   width:170px;height:85px;
@@ -216,7 +216,7 @@ html,body{min-height:100%;background:#111;display:flex;justify-content:center;al
 }
 .cd-unit{
   display:flex;flex-direction:column;align-items:center;
-  background:#0D0D1A;border:1px solid #CC2233;border-radius:6px;
+  background:#131328;border:1px solid #CC2233;border-radius:6px;
   padding:5px 10px;min-width:50px;
   box-shadow:0 0 8px rgba(204,34,51,.2),inset 0 0 10px rgba(204,34,51,.05);
 }
@@ -224,7 +224,7 @@ html,body{min-height:100%;background:#111;display:flex;justify-content:center;al
   font-family:'Orbitron',sans-serif;font-size:19px;font-weight:700;
   color:#fff;text-shadow:0 0 10px rgba(255,255,255,.3);line-height:1;
 }
-.cd-lbl{font-size:8px;color:#555;letter-spacing:1px;text-transform:uppercase;margin-top:2px}
+.cd-lbl{font-size:8px;color:#8888aa;letter-spacing:1px;text-transform:uppercase;margin-top:2px}
 .cd-sep{
   font-family:'Orbitron',sans-serif;font-size:16px;color:#CC2233;font-weight:700;
   animation:blink 1s step-end infinite;margin:0 1px;
@@ -234,7 +234,7 @@ html,body{min-height:100%;background:#111;display:flex;justify-content:center;al
 /* ââ INFO CARD ââ */
 .icard{
   margin:14px 14px 0;
-  background:#0D0D1A;
+  background:#131328;
   border:1px solid #1a1a2e;
   border-radius:12px;padding:14px 16px;
   position:relative;overflow:hidden;
@@ -250,9 +250,9 @@ html,body{min-height:100%;background:#111;display:flex;justify-content:center;al
 .irow{display:flex;align-items:flex-start;gap:12px;padding:8px 0;border-bottom:1px solid #12121f}
 .irow:last-child{border-bottom:none;padding-bottom:0}
 .iicon{font-size:17px;width:26px;text-align:center;flex-shrink:0;margin-top:1px}
-.ilabel{font-size:9px;color:#444;letter-spacing:1px;text-transform:uppercase}
+.ilabel{font-size:9px;color:#8888aa;letter-spacing:1px;text-transform:uppercase}
 .ival{font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:700;color:#fff;margin-top:1px}
-.isub{font-size:11px;color:#666;margin-top:1px}
+.isub{font-size:11px;color:#9999bb;margin-top:1px}
 
 /* ââ SECTION HEADER ââ */
 .sh{display:flex;align-items:center;justify-content:space-between;padding:14px 14px 8px}
@@ -262,7 +262,7 @@ html,body{min-height:100%;background:#111;display:flex;justify-content:center;al
 /* ââ QUICK GRID ââ */
 .qgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 14px 14px}
 .qcard{
-  background:#0D0D1A;border:1px solid #1a1a2e;border-radius:12px;
+  background:#131328;border:1px solid #1a1a2e;border-radius:12px;
   padding:14px 13px;cursor:pointer;transition:all .2s;
   position:relative;overflow:hidden;
 }
@@ -274,12 +274,12 @@ html,body{min-height:100%;background:#111;display:flex;justify-content:center;al
 .qcard:hover{transform:translateY(-2px);border-color:#252535}
 .qi{font-size:24px;margin-bottom:7px}
 .ql{font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;color:#fff}
-.qs{font-size:11px;color:#444;margin-top:1px}
+.qs{font-size:11px;color:#8888aa;margin-top:1px}
 
 /* ââ FEATURED BANNER ââ */
 .fbanner{
   margin:0 14px 14px;
-  background:linear-gradient(135deg,#150010 0%,#0D0D1A 60%);
+  background:linear-gradient(135deg,#150010 0%,#131328 60%);
   border:1px solid #CC2233;border-radius:12px;
   padding:14px;display:flex;align-items:center;gap:12px;
   box-shadow:0 0 20px rgba(204,34,51,.1);cursor:pointer;
@@ -287,14 +287,14 @@ html,body{min-height:100%;background:#111;display:flex;justify-content:center;al
 .fb-icon{font-size:34px;flex-shrink:0}
 .fb-eyebrow{font-family:'Orbitron',sans-serif;font-size:8px;color:#CC2233;letter-spacing:2px;text-transform:uppercase}
 .fb-title{font-family:'Anton',sans-serif;font-size:20px;letter-spacing:2px;color:#fff;margin-top:2px}
-.fb-desc{font-size:12px;color:#666;margin-top:2px}
+.fb-desc{font-size:12px;color:#9999bb;margin-top:2px}
 .fb-arrow{margin-left:auto;color:#CC2233;font-size:18px;flex-shrink:0}
 
 /* âââââââââââââââââââââââââââââââââââââââ
    SCHEDULE SCREEN
 âââââââââââââââââââââââââââââââââââââââ */
 .sch-header{
-  background:linear-gradient(180deg,#000 0%,#07070F 100%);
+  background:linear-gradient(180deg,#06060f 0%,#0b0b1c 100%);
   padding:18px 14px 14px;border-bottom:1px solid #12121f;
 }
 .date-pill{
@@ -312,7 +312,7 @@ html,body{min-height:100%;background:#111;display:flex;justify-content:center;al
   flex-shrink:0;padding:6px 14px;border-radius:20px;
   font-family:'Rajdhani',sans-serif;font-size:11px;font-weight:700;
   letter-spacing:1px;text-transform:uppercase;cursor:pointer;
-  border:1px solid #1a1a2e;background:#0D0D1A;color:#444;transition:all .2s;
+  border:1px solid #1a1a2e;background:#131328;color:#8888aa;transition:all .2s;
 }
 .fchip.on{background:#CC2233;color:#fff;border-color:#CC2233;box-shadow:0 0 10px rgba(204,34,51,.4)}
 
@@ -324,7 +324,7 @@ html,body{min-height:100%;background:#111;display:flex;justify-content:center;al
 }
 .ti:last-child::before{display:none}
 .ti-time-col{width:44px;flex-shrink:0;padding-top:13px;text-align:right}
-.ti-time{font-family:'Orbitron',sans-serif;font-size:9px;color:#444;letter-spacing:.3px}
+.ti-time{font-family:'Orbitron',sans-serif;font-size:9px;color:#8888aa;letter-spacing:.3px}
 .ti-dot-col{display:flex;flex-direction:column;align-items:center;flex-shrink:0;padding-top:13px;position:relative;z-index:1}
 .ti-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:3px}
 .d-red{background:#CC2233;box-shadow:0 0 8px #CC2233}
@@ -333,7 +333,7 @@ html,body{min-height:100%;background:#111;display:flex;justify-content:center;al
 .d-green{background:#39FF14;box-shadow:0 0 8px #39FF14}
 .d-orange{background:#FF8C00;box-shadow:0 0 8px #FF8C00}
 .tc{
-  flex:1;background:#0D0D1A;border:1px solid #1a1a2e;border-radius:10px;
+  flex:1;background:#131328;border:1px solid #1a1a2e;border-radius:10px;
   padding:11px 13px;margin-bottom:10px;cursor:pointer;transition:all .2s;
 }
 .tc:hover{border-color:#252535;transform:translateX(2px)}
@@ -349,15 +349,15 @@ html,body{min-height:100%;background:#111;display:flex;justify-content:center;al
 .b-cyan{background:rgba(0,170,204,.15);color:#00AACC;border:1px solid rgba(0,170,204,.3)}
 .b-yellow{background:rgba(255,224,0,.12);color:#FFE000;border:1px solid rgba(255,224,0,.3)}
 .b-green{background:rgba(57,255,20,.12);color:#39FF14;border:1px solid rgba(57,255,20,.3)}
-.tc-loc{font-size:11px;color:#444;margin-top:4px}
-.tc-desc{font-size:12px;color:#666;margin-top:5px;line-height:1.45}
+.tc-loc{font-size:11px;color:#8888aa;margin-top:4px}
+.tc-desc{font-size:12px;color:#9999bb;margin-top:5px;line-height:1.45}
 
 /* âââââââââââââââââââââââââââââââââââââââ
    VENUE SCREEN
 âââââââââââââââââââââââââââââââââââââââ */
 .map-box{
   margin:14px;height:220px;
-  background:#09091A;border:1px solid #1a1a2e;border-radius:12px;
+  background:#0f0f28;border:1px solid #1a1a2e;border-radius:12px;
   position:relative;overflow:hidden;
 }
 .map-grid{
@@ -386,30 +386,30 @@ html,body{min-height:100%;background:#111;display:flex;justify-content:center;al
 .zlist{padding:0 14px 14px;display:flex;flex-direction:column;gap:7px}
 .zitem{
   display:flex;align-items:center;gap:12px;
-  background:#0D0D1A;border:1px solid #1a1a2e;border-radius:10px;
+  background:#131328;border:1px solid #1a1a2e;border-radius:10px;
   padding:11px 13px;cursor:pointer;transition:all .2s;
 }
 .zitem:hover{border-color:#252535}
 .zdot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
 .zname{font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;color:#fff}
-.zdesc{font-size:11px;color:#444;margin-top:1px}
-.zdist{margin-left:auto;font-family:'Orbitron',sans-serif;font-size:9px;color:#333;flex-shrink:0}
+.zdesc{font-size:11px;color:#8888aa;margin-top:1px}
+.zdist{margin-left:auto;font-family:'Orbitron',sans-serif;font-size:9px;color:#6666aa;flex-shrink:0}
 
 /* âââââââââââââââââââââââââââââââââââââââ
    TICKETS SCREEN
 âââââââââââââââââââââââââââââââââââââââ */
 .tix-hero{
-  background:linear-gradient(180deg,#150008 0%,#07070F 100%);
+  background:linear-gradient(180deg,#150010 0%,#0b0b1c 100%);
   padding:22px 14px 18px;text-align:center;
   border-bottom:1px solid #1a1a2e;
 }
 .tix-eyebrow{font-family:'Orbitron',sans-serif;font-size:8px;color:#CC2233;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px}
 .tix-title{font-family:'Anton',sans-serif;font-size:38px;letter-spacing:5px;color:#fff;text-transform:uppercase}
-.tix-sub{font-size:12px;color:#555;margin-top:4px}
+.tix-sub{font-size:12px;color:#8888aa;margin-top:4px}
 
 .tix-list{padding:14px;display:flex;flex-direction:column;gap:11px}
 .tcard{
-  background:#0D0D1A;border-radius:14px;overflow:hidden;
+  background:#131328;border-radius:14px;overflow:hidden;
   cursor:pointer;transition:all .2s;border:1px solid #1a1a2e;
 }
 .tcard:hover{transform:translateY(-2px)}
@@ -422,7 +422,7 @@ html,body{min-height:100%;background:#111;display:flex;justify-content:center;al
 }
 .tprice-block{text-align:right}
 .tprice{font-family:'Orbitron',sans-serif;font-size:19px;font-weight:700}
-.tprice-lbl{font-size:9px;color:#444;letter-spacing:1px;margin-top:2px}
+.tprice-lbl{font-size:9px;color:#8888aa;letter-spacing:1px;margin-top:2px}
 .tdivider{
   height:1px;position:relative;
   background:repeating-linear-gradient(90deg,#1a1a2e 0,#1a1a2e 5px,transparent 5px,transparent 9px);
@@ -434,9 +434,9 @@ html,body{min-height:100%;background:#111;display:flex;justify-content:center;al
 }
 .tdivider::before{left:-7px}
 .tdivider::after{right:-7px}
-.tbody{padding:11px 15px 15px}
+.tbody{padding:11px 15px 20px}
 .tperks{list-style:none;display:flex;flex-direction:column;gap:5px;margin-bottom:13px}
-.tperk{display:flex;align-items:center;gap:8px;font-size:13px;color:#aaa}
+.tperk{display:flex;align-items:center;gap:8px;font-size:13px;color:#ccccdd}
 .pcheck{font-size:13px}
 .tcta{
   width:100%;border:none;border-radius:8px;padding:11px;
@@ -447,13 +447,13 @@ html,body{min-height:100%;background:#111;display:flex;justify-content:center;al
 .cta-red:hover{background:#e02233;box-shadow:0 4px 16px rgba(204,34,51,.4)}
 .cta-cyan{background:transparent;color:#00AACC;border:1px solid #00AACC}
 .cta-cyan:hover{background:rgba(0,170,204,.1)}
-.cta-dim{background:transparent;color:#444;border:1px solid #1a1a2e}
+.cta-dim{background:transparent;color:#8888aa;border:1px solid #1a1a2e}
 
 /* âââââââââââââââââââââââââââââââââââââââ
    MORE SCREEN
 âââââââââââââââââââââââââââââââââââââââ */
 .more-header{
-  background:linear-gradient(180deg,#000 0%,#07070F 100%);
+  background:linear-gradient(180deg,#06060f 0%,#0b0b1c 100%);
   padding:22px 14px 18px;text-align:center;
   border-bottom:1px solid #1a1a2e;
 }
@@ -470,35 +470,35 @@ html,body{min-height:100%;background:#111;display:flex;justify-content:center;al
 .more-rad{
   font-family:'Permanent Marker',cursive;font-size:50px;color:#fff;
   position:absolute;top:-7px;left:-2px;transform:rotate(-5deg);
-  line-height:1;text-shadow:2px 2px 0 rgba(0,0,0,.9);letter-spacing:2px;
+  line-height:1;text-shadow:.px 2px 0 rgba(0,0,0,.9);letter-spacing:2px;
 }
-.more-tagline{font-family:'Rajdhani',sans-serif;font-size:12px;color:#555;letter-spacing:2px;text-transform:uppercase;margin-top:8px}
-.more-sub{font-size:11px;color:#333;margin-top:6px}
+.more-tagline{font-family:'Rajdhani',sans-serif;font-size:12px;color:#8888aa;letter-spacing:2px;text-transform:uppercase;margin-top:8px}
+.more-sub{font-size:11px;color:#6666aa;margin-top:6px}
 
 .msec{padding:14px 14px 4px}
-.msec-lbl{font-family:'Orbitron',sans-serif;font-size:8px;color:#333;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
+.msec-lbl{font-family:'Orbitron',sans-serif;font-size:8px;color:#6666aa;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
 .mlist{display:flex;flex-direction:column;gap:2px}
 .mitem{
   display:flex;align-items:center;gap:12px;
-  background:#0D0D1A;border-radius:10px;padding:13px;
+  background:#131328;border-radius:10px;padding:13px;
   cursor:pointer;transition:all .2s;border:1px solid transparent;
 }
 .mitem:hover{border-color:#1a1a2e}
 .mico{font-size:18px;width:26px;text-align:center;flex-shrink:0}
 .mlbl{font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;color:#fff}
-.msub{font-size:11px;color:#444;margin-top:1px}
-.marr{margin-left:auto;color:#2a2a3a;font-size:15px}
+.msub{font-size:11px;color:#8888aa;margin-top:1px}
+.marr{margin-left:auto;color:#5555aa;font-size:15px}
 
 .social-row{display:flex;gap:8px;padding:0 14px 14px}
 .sbtn{
-  flex:1;background:#0D0D1A;border:1px solid #1a1a2e;border-radius:10px;
+  flex:1;background:#131328;border:1px solid #1a1a2e;border-radius:10px;
   padding:13px 8px;text-align:center;cursor:pointer;transition:all .2s;
 }
 .sbtn:hover{border-color:#252535}
 .sbtn-ico{font-size:20px;margin-bottom:3px}
-.sbtn-lbl{font-size:10px;color:#444;font-family:'Rajdhani',sans-serif;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+.sbtn-lbl{font-size:10px;color:#8888aa;font-family:'Rajdhani',sans-serif;font-weight:700;letter-spacing:1px;text-transform:uppercase}
 
-.pwby{text-align:center;padding:10px 14px 20px;font-size:10px;color:#2a2a2a;letter-spacing:1.5px;text-transform:uppercase;font-family:'Orbitron',sans-serif}
+.pwby{text-align:center;padding:10px 14px 20px;font-size:10px;color:#6666aa;letter-spacing:1.5px;text-transform:uppercase;font-family:'Orbitron',sans-serif}
 .pwby span{color:#CC2233}
 
 /* ââ UTILITIES ââ */
@@ -627,8 +627,8 @@ html,body{min-height:100%;background:#111;display:flex;justify-content:center;al
       <span class="fb-icon">ð</span>
       <div>
         <div class="fb-eyebrow">Featured Marque 2026</div>
-        <div class="fb-title">Nissan Skyline R32</div>
-        <div class="fb-desc">The icon that defined a generation. An era immortalised.</div>
+        <div class="fb-title">Ford Sierra Cosworth</div>
+        <div class="fb-desc">The homologation hero that ruled rallying. Britain's greatest performance icon.</div>
       </div>
       <span class="fb-arrow">âº</span>
     </div>
@@ -772,7 +772,7 @@ html,body{min-height:100%;background:#111;display:flex;justify-content:center;al
           <ul class="tperks">
             <li class="tperk"><span class="pcheck" style="color:#FFE000">â</span> Everything in RAD Pass</li>
             <li class="tperk"><span class="pcheck" style="color:#FFE000">â</span> Hagerty VIP Lounge access</li>
-            <li class="tperk"><span class="pcheck" style="color:#FFE000">â</span> Complimentary drinks on arrival</li>
+            <li class="tperk"><span class="pcheck" style="color:#FFE000">â</span> Complimentary drink on arrival</li>
             <li class="tperk"><span class="pcheck" style="color:#FFE000">â</span> Meet the judges &amp; car owners</li>
             <li class="tperk"><span class="pcheck" style="color:#FFE000">â</span> Covered viewing at awards ceremony</li>
           </ul>
@@ -803,14 +803,24 @@ html,body{min-height:100%;background:#111;display:flex;justify-content:center;al
       </div>
 
     </div>
-    <div style="text-align:center;padding:4px 14px 20px;font-size:10px;color:#2a2a2a;letter-spacing:1px;font-family:'Orbitron',sans-serif">All tickets include free parking Â· Secure checkout via Hagerty</div>
+    <div style="text-align:center;padding:4px 14px 20px;font-size:10px;color:#6666aa;letter-spacing:1px;font-family:'Orbitron',sans-serif">All tickets include free parking Â· Secure checkout via Hagerty</div>
   </div>
 
-  <!-- ââ MORE SC_EELT£RVCV@´´ø(ñ¥Ø±ÍÌôÍÉ¸¥ôÍµµ½Éø(ñ¥Ø±ÍÌôµ½Éµ¡Èø(ñ¥Ø±ÍÌôµ½Éµ±½¼µÝÉÀø(ñÍÁ¸±ÍÌôµ½ÉµÝ½½ù]==ð½ÍÁ¸ø(ñÍÁ¸±ÍÌôµ½ÉµÉùIð½ÍÁ¸ø(ð½¥Øø(ñ¥Ø±ÍÌôµ½ÉµÑ±¥¹ù
-±ÉÑ¥¹àÁÌµÀìäÁÌ
-È
-Õ±ÑÕÉð½¥Øø(ñ¥Ø±ÍÌôµ½ÉµÍÕùÉ¥Ù¸ä!ÉÑä
-ÜÍÐ¸ÈÀÄÜð½¥Øø(ð½¥Øø((ñ¥Ø±ÍÌôµÍø(ñ¥Ø±ÍÌôµÍµ±°ù%¹¼ð½¥Øø(ñ¥Ø±ÍÌôµ±¥ÍÐø(ñ¥Ø±ÍÌôµ¥Ñ´øñÍÁ¸±ÍÌôµ¥¼ûvLð½ÍÁ¸øñ¥Ø><div class="mlbl">FAQs</div><div class="msub">Parking, accessibility, rules &amp; more</div></div><span class="marr">âº</span></div>
+  <!-- ââ MORE SCREEN ââ -->
+  <div class="screen" id="sc-more">
+    <div class="more-header">
+      <div class="more-logo-wrap">
+        <span class="more-wood">WOOD</span>
+        <span class="more-rad">RAD</span>
+      </div>
+      <div class="more-tagline">Celebrating 80s &amp; 90s Car Culture</div>
+      <div class="more-sub">Driven by Hagerty Â· Est. 2017</div>
+    </div>
+
+    <div class="msec">
+      <div class="msec-lbl">Info</div>
+      <div class="mlist">
+        <div class="mitem"><span class="mico">â</span><div><div class="mlbl">FAQs</div><div class="msub">Parking, accessibility, rules &amp; more</div></div><span class="marr">âº</span></div>
         <div class="mitem"><span class="mico">ð</span><div><div class="mlbl">Vehicle Rules</div><div class="msub">What qualifies for the show field?</div></div><span class="marr">âº</span></div>
         <div class="mitem"><span class="mico">ð§</span><div><div class="mlbl">Family Info</div><div class="msub">Under 12s go free Â· Family facilities</div></div><span class="marr">âº</span></div>
         <div class="mitem"><span class="mico">â¿</span><div><div class="mlbl">Accessibility</div><div class="msub">Disabled parking, access &amp; facilities</div></div><span class="marr">âº</span></div>
@@ -909,7 +919,7 @@ var SCHED=[
   {time:'11:00',name:'Synthwave Stage Opens',loc:'Synthwave Stage',cat:'music',dot:'d-red',badge:'b-red',bt:'Live',desc:'DJ RAD kicks off the live stage with a fully era-accurate 80s &amp; 90s playlist.',hi:false},
   {time:'12:00',name:'The Fuel Stop Opens',loc:'Food Court',cat:'food',dot:'d-green',badge:'b-green',bt:'Food',desc:'Street food vendors, food trucks, and an 80s-themed ice cream van serving all day.',hi:false},
   {time:'13:00',name:'Live DJ: Retro Drive Mix',loc:'Synthwave Stage',cat:'music',dot:'d-red',badge:'b-red',bt:'Live',desc:'Non-stop bangers from the golden era â from Pure Shores to Jump Around.',hi:false},
-  {time:'14:00',name:'Featured Marque Showcase',loc:'VIP Paddock',cat:'show',dot:'d-cyan',badge:'b-cyan',bt:'Show',desc:"This year's featured marque: the iconic Nissan Skyline R32 generation. On display in force.",hi:true},
+  {time:'14:00',name:'Featured Marque Showcase',loc:'VIP Paddock',cat:'show',dot:'d-cyan',badge:'b-cyan',bt:'Show',desc:"This year's featured marque: the iconic Ford Sierra Cosworth generation. On display in force.",hi:true},
   {time:'15:00',name:'RAD Awards Ceremony',loc:'Main Stage',cat:'show',dot:'d-yellow',badge:'b-yellow',bt:'Awards',desc:'The most outstanding vehicles are presented to the crowd. RAD Awards presented live on stage.',hi:false},
   {time:'16:00',name:'Final Parade Lap',loc:'Show Field',cat:'show',dot:'d-red',badge:'b-red',bt:'Show',desc:'Every registered car takes one final celebratory lap. Line your spot early.',hi:false},
   {time:'17:00',name:'Gates Close',loc:'Main Entrance',cat:'all',dot:'d-red',badge:'b-red',bt:'End',desc:'The day is done. Safe travels home â and see you next year. Stay RAD.',hi:false},
